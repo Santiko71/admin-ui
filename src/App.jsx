@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './App.css'
 
 // Anda dapat menghapus import reactLogo dan viteLogo karena tidak digunakan lagi.
 // import reactLogo from './assets/react.svg'
@@ -31,7 +32,7 @@ function App() {
 
   return (
     // Latar belakang abu-abu muda dan penempatan di tengah layar
-    <div className="min-h-screen bg-gray-700 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
 
       {/* Kotak Notifikasi Kustom (Pengganti alert()) */}
       <div id="custom-alert" className="fixed top-4 right-4 bg-green-500 text-white p-3 rounded-lg shadow-lg hidden transition-opacity duration-300 z-50">
