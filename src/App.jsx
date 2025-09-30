@@ -1,53 +1,99 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+
+// Anda dapat menghapus import reactLogo dan viteLogo karena tidak digunakan lagi.
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+// import './App.css' // File CSS eksternal tidak digunakan karena memakai Tailwind
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Logika login sederhana
+    console.log('Email:', email);
+    console.log('Password:', password);
+    alert('Simulasi Login: Lihat konsol untuk data yang dimasukkan.');
+  };
+  
+  // Fungsi alert kustom untuk menghindari alert() yang diblokir di lingkungan tertentu
+  const alert = (message) => {
+    const alertBox = document.getElementById('custom-alert');
+    if (alertBox) {
+      alertBox.textContent = message;
+      alertBox.classList.remove('hidden');
+      setTimeout(() => {
+        alertBox.classList.add('hidden');
+      }, 3000); // Sembunyikan setelah 3 detik
+    }
+  };
 
   return (
-    <>
-      <div className='min-h-screen bg-rose-950 flex flex-col items-center justify-center text-center'>
-        <div className='flex items-center justify-center space-x-8 mb-12'>
-          <a href="https://vite.dev" target="_blank">
-            <img 
-              src={viteLogo} 
-              className="logo w-24 h-24 animate-bounce" 
-              alt="Vite logo"
-              style={{ animationDuration: "1s"}}
-              />
-          </a>
-          <a href="https://react.dev" target="_blank">
-            <img 
-              src={reactLogo} 
-              className="logo react w-24 h-24 animate-spin"
-              alt="React logo" 
-              style={{ animationDuration: "1s"}}
-              />
-          </a>
-        </div>
-        <h1 className="bg-red-500 text-white font-bold mb-16 px-3 rounded-lg text-lg">Vite + React</h1>
-        <h3 className='text-white font-bold text-xl mb-8
-          animate-ping' style={{ animationDuration: "2s"}}
-        
-        >Taufik Nur Santiko</h3>
-        <div className="card text-sm space-y-6 mb-8">
-          <button onClick={() => setCount((count) => count + 1)}
-             className='bg-neutral-900 text-pink-400 py-2 px-6 rounded-lg text-lg'
-            >
-            count is {count}
-          </button>
-          <p className='text-neutral-400'>
-            Edit <code>src/App.jsx</code> and save to test HMR
-          </p>
-        </div>
-        <p className="read-the-docs text-neutral-500">
-          Click on the Vite and React logos to learn more
-        </p>
+    // Latar belakang abu-abu muda dan penempatan di tengah layar
+    <div className="min-h-screen bg-gray-700 flex items-center justify-center p-4">
+
+      {/* Kotak Notifikasi Kustom (Pengganti alert()) */}
+      <div id="custom-alert" className="fixed top-4 right-4 bg-green-500 text-white p-3 rounded-lg shadow-lg hidden transition-opacity duration-300 z-50">
+        Simulasi Login: Lihat konsol untuk data yang dimasukkan.
       </div>
-    </>
-  )
+
+      {/* Container Utama Login Card */}
+      <div className="flex w-full max-w-2xl bg-white shadow-2xl rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-[1.01] mx-auto">
+        
+        {/* Bagian Kiri (Placeholder Gambar) */}
+        <div className="hidden sm:flex w-1/2 bg-gray-300 items-center justify-center p-8">
+          <span className="text-gray-600 text-3xl font-bold">600 × 500</span>
+        </div>
+
+        {/* Bagian Kanan (Formulir Login) */}
+        <div className="w-full sm:w-1/2 p-8 md:p-10">
+          <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">Login</h2>
+
+          <form onSubmit={handleSubmit}>
+            
+            {/* Input Email */}
+            <div className="mb-5">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Masukkan email"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150"
+                required
+              />
+            </div>
+
+            {/* Input Password */}
+            <div className="mb-6">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Masukkan password"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150"
+                required
+              />
+            </div>
+
+            {/* Tombol Login */}
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 active:bg-blue-800"
+            >
+              Login
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
