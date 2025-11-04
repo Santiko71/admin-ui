@@ -1,4 +1,4 @@
-export const getPost = [
+[
   {
     "userId": 1,
     "id": 1,
@@ -216,3 +216,5 @@ export const getPost = [
     "body": "ad mollitia et omnis minus architecto odit\nvoluptas doloremque maxime aut non ipsa qui alias veniam\nblanditiis culpa aut quia nihil cumque facere et occaecati\nqui aspernatur quia eaque ut aperiam inventore"
   }, 
 ]
+
+export default postUsers;
