@@ -2,6 +2,7 @@ import React from 'react'
 import LabeledInput from '../Elements/LabeledInput';
 import CheckBox from '../Elements/CheckBox';
 import Button from '../Elements/Button';
+import { Link } from 'react-router-dom'
 
 function FormSignup() {
   return (
@@ -92,9 +93,11 @@ function FormSignup() {
         </div>
         {/* sign in with google end */}
         {/* link start */}
-        <div className="flex justify-center mt-6">
-            <a className='text-gray-03 text-sm mr-2'>Already have an account? </a>
-            <a className="text-primary text-sm font-bold">Sign In Here</a>
+        <div className="flex justify-center text-sm text-gray-01">
+            <span className='mr-1'>Already have an account?</span>
+            <Link to="/login" className="text-primary font-bold">
+            Sign In Here
+            </Link>
         </div>
         {/* link end */}
     </>
